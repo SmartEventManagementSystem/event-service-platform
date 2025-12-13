@@ -1,0 +1,357 @@
+{
+  "info": {
+    "name": "event-service-platform - API",
+    "_postman_id": "event-service-platform-collection",
+    "description": "Postman collection for event-service-platform (import to Postman). Replace {{baseUrl}} with server address and set {{accessToken}}/{{adminToken}}.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "socialBaseUrl", "value": "http://localhost:8081" },
+    { "key": "accessToken", "value": "" },
+    { "key": "adminToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/health" }
+      }
+    },
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/v1/auth/register" }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/v1/auth/login" }
+      }
+    },
+    {
+      "name": "Auth - Refresh Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/auth/refresh-token" }
+      }
+    },
+    {
+      "name": "Auth - Logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/auth/logout" }
+      }
+    },
+    {
+      "name": "Auth - Me",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/auth/me" }
+      }
+    },
+    {
+      "name": "Users - Get Balances",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/users/balances" }
+      }
+    },
+    {
+      "name": "Users - Get Balance History",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/users/balances/history" }
+      }
+    },
+    {
+      "name": "Collections - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/collections" }
+      }
+    },
+    {
+      "name": "Collections - Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/collections/:id" }
+      }
+    },
+    {
+      "name": "Collections - Create (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Holiday Special\",\n  \"description\": \"Limited time collection\",\n  \"type\": \"THEME\",\n  \"reward_amount\": 100,\n  \"reward_currency\": \"COIN\",\n  \"is_enabled\": true\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/v1/collections" }
+      }
+    },
+    {
+      "name": "Collections - Update (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"description\": \"Updated description\",\n  \"is_enabled\": false\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/collections/:id" }
+      }
+    },
+    {
+      "name": "Collections - Delete (Admin)",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/collections/:id" }
+      }
+    },
+    {
+      "name": "Items - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/items" }
+      }
+    },
+    {
+      "name": "Items - Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/items/:id" }
+      }
+    },
+    {
+      "name": "Items - Create (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Golden Ticket\",\n  \"description\": \"A rare ticket item\",\n  \"rarity_config_id\": \"<RARITY_UUID>\",\n  \"image_url\": \"https://example.com/gold.png\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/items" }
+      }
+    },
+    {
+      "name": "Items - Update (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Golden Ticket v2\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/items/:id" }
+      }
+    },
+    {
+      "name": "Items - Delete (Admin)",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/items/:id" }
+      }
+    },
+    {
+      "name": "Rarity - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/rarity-configs" }
+      }
+    },
+    {
+      "name": "Rarity - Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/rarity-configs/:id" }
+      }
+    },
+    {
+      "name": "Rarity - Create (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"code\": \"R001\",\n  \"label\": \"Legendary\",\n  \"rank\": 1,\n  \"drop_weight\": 5,\n  \"color_hex\": \"#FFD700\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/rarity-configs" }
+      }
+    },
+    {
+      "name": "Rarity - Update (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"label\": \"Epic\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/rarity-configs/:id" }
+      }
+    },
+    {
+      "name": "Rarity - Delete (Admin)",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{adminToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/rarity-configs/:id" }
+      }
+    },
+    {
+      "name": "Game - Spin",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "body": { "mode": "raw", "raw": "{}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/game/spin" }
+      }
+    },
+    {
+      "name": "Game - Claim Daily Reward",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/game/daily-reward" }
+      }
+    },
+    {
+      "name": "Game - Stats",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/game/stats" }
+      }
+    },
+    {
+      "name": "Inventory - List",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/inventory" }
+      }
+    },
+    {
+      "name": "Inventory - Get Item",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/inventory/:id" }
+      }
+    },
+    {
+      "name": "Inventory - Collection Progress",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/inventory/collection-progress" }
+      }
+    }
+    ,
+    {
+      "name": "Posts - Create",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"title\": \"Hello world\",\n  \"content\": \"This is my first post\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/posts" }
+      }
+    },
+    {
+      "name": "Posts - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/posts?user_id={{userId}}&page=1&page_size=20" }
+      }
+    },
+    {
+      "name": "Posts - Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/posts/:id" }
+      }
+    },
+    {
+      "name": "Posts - Update",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Updated content\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/posts/:id" }
+      }
+    },
+    {
+      "name": "Posts - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/posts/:id" }
+      }
+    }
+    ,
+    {
+      "name": "Comments - Create",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Nice post!\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/v1/posts/:id/comments" }
+      }
+    },
+    {
+      "name": "Comments - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/v1/posts/:id/comments" }
+      }
+    },
+    {
+      "name": "Comments - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{accessToken}}" } ],
+        "url": { "raw": "{{baseUrl}}/api/v1/comments/:id" }
+      }
+    }
+    ,
+    {
+      "name": "Social - Follow (service)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"<FOLLOWER_UUID>\"\n}" },
+        "url": { "raw": "{{socialBaseUrl}}/api/v1/social/users/:username/follow" }
+      }
+    },
+    {
+      "name": "Social - Unfollow (service)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"<FOLLOWER_UUID>\"\n}" },
+        "url": { "raw": "{{socialBaseUrl}}/api/v1/social/users/:username/unfollow" }
+      }
+    }
+  ]
+}
