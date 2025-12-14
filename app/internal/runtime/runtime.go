@@ -5,9 +5,9 @@ import (
 	"github.com/go-resty/resty/v2"
 	"go.uber.org/zap"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/db"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/redis"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/pkg/db"
+	"backend/event-service-platform/app/pkg/redis"
 )
 
 type Clients struct {

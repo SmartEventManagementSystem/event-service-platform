@@ -1,7 +1,7 @@
 package sqs_test
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/sqs"
+	"backend/event-service-platform/app/pkg/sqs"
 	"testing"
 	"time"
 

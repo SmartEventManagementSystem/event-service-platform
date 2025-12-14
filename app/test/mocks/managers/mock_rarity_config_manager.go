@@ -5,8 +5,8 @@
 package mocks
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/repository"
 	"context"
 
 	"github.com/google/uuid"

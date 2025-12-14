@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/internal/runtime"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
 	"go.uber.org/zap"
 )
 
@@ -83,40 +83,40 @@ func (ak *ApiKeyAuthentication) RequireAuth() echo.MiddlewareFunc {
 func (ak *ApiKeyAuthentication) RequireRole(requiredRole string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-		// Service accounts typically have specific roles
-		// For API key authentication, we might want different logic
-		// Since services often have elevated permissions, we can either:
-		// 1. Always allow service accounts (bypass role check)
-		// 2. Check against service-specific roles
+			// Service accounts typically have specific roles
+			// For API key authentication, we might want different logic
+			// Since services often have elevated permissions, we can either:
+			// 1. Always allow service accounts (bypass role check)
+			// 2. Check against service-specific roles
 
-		// Option 1: Allow all authenticated service accounts
-		if ak.IsServiceAccount(c) {
-			ak.res.Logger.Debug("Service account authenticated, bypassing role check")
-			return next(c)
-		}
+			// Option 1: Allow all authenticated service accounts
+			if ak.IsServiceAccount(c) {
+				ak.res.Logger.Debug("Service account authenticated, bypassing role check")
+				return next(c)
+			}
 
-		// Option 2: Check role normally (uncomment if needed)
-		/*
-		   roleInterface, exists := c.Get(contextRole)
-		   if !exists {
-		       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: no role found"))
-		       c.Abort()
-		       return
-		   }
+			// Option 2: Check role normally (uncomment if needed)
+			/*
+			   roleInterface, exists := c.Get(contextRole)
+			   if !exists {
+			       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: no role found"))
+			       c.Abort()
+			       return
+			   }
 
-		   userRole, ok := roleInterface.(string)
-		   if !ok {
-		       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: invalid role"))
-		       c.Abort()
-		       return
-		   }
+			   userRole, ok := roleInterface.(string)
+			   if !ok {
+			       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: invalid role"))
+			       c.Abort()
+			       return
+			   }
 
-		   if !ak.HasRequiredRole(userRole, requiredRole) {
-		       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: insufficient permissions"))
-		       c.Abort()
-		       return
-		   }
-		*/
+			   if !ak.HasRequiredRole(userRole, requiredRole) {
+			       c.JSON(http.StatusForbidden, response.ToErrorResponse(http.StatusForbidden, "Access denied: insufficient permissions"))
+			       c.Abort()
+			       return
+			   }
+			*/
 
 			return next(c)
 		}

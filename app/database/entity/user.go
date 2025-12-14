@@ -6,8 +6,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/role"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/user"
+	"backend/event-service-platform/app/database/constant/role"
+	"backend/event-service-platform/app/database/constant/user"
 )
 
 type User struct {

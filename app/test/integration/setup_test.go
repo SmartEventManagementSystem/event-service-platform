@@ -1,15 +1,15 @@
 package integration
 
 import (
-	service "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service"
+	service "backend/event-service-platform/app/service"
 	"context"
 	"database/sql"
 	"time"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/controller"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/middleware"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/validator"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
+	"backend/event-service-platform/app/api/controller"
+	"backend/event-service-platform/app/api/middleware"
+	"backend/event-service-platform/app/internal/validator"
+	"backend/event-service-platform/app/manager"
 
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
@@ -17,15 +17,15 @@ import (
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/router"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/db"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/logging"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/redis"
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
-	httputil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/test/util"
+	"backend/event-service-platform/app/api/router"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/db"
+	"backend/event-service-platform/app/pkg/logging"
+	"backend/event-service-platform/app/pkg/redis"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
+	httputil "backend/event-service-platform/app/test/util"
 )
 
 type RouterSuite struct {

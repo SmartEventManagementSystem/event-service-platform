@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	collectionconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/collection"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
+	collectionconst "backend/event-service-platform/app/database/constant/collection"
+	"backend/event-service-platform/app/database/constant/currency"
+	"backend/event-service-platform/app/database/entity"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"

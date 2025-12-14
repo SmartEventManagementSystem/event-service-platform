@@ -1,9 +1,9 @@
 package integration
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/worker/handlers"
+	"backend/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/manager"
+	"backend/event-service-platform/app/pkg/worker/handlers"
 	"context"
 	"testing"
 	"time"

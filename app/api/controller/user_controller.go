@@ -6,14 +6,14 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service/social"
-    "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-    txconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/transaction"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/database/constant/currency"
+	txconst "backend/event-service-platform/app/database/constant/transaction"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/manager"
+	"backend/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/service/social"
 )
 
 type UserController struct {
@@ -63,17 +63,17 @@ func (c *UserController) GetUserProfile(ec echo.Context) error {
 
 // GetBalances godoc
 //
-//  @Summary        Get user balances
-//  @Description    Return current balances for the authenticated user; optionally filter by currency
-//  @Tags           users
-//  @Accept          json
-//  @Produce        json
-//  @Param          currency  query   string  false  "Filter by currency"   Enums(COIN,SPIN)
-//  @Success        200     {object}    map[string]int64
-//  @Failure        400
-//  @Failure        401
-//  @Failure        500
-//  @Router         /api/v1/users/balances [get]
+//	@Summary        Get user balances
+//	@Description    Return current balances for the authenticated user; optionally filter by currency
+//	@Tags           users
+//	@Accept          json
+//	@Produce        json
+//	@Param          currency  query   string  false  "Filter by currency"   Enums(COIN,SPIN)
+//	@Success        200     {object}    map[string]int64
+//	@Failure        400
+//	@Failure        401
+//	@Failure        500
+//	@Router         /api/v1/users/balances [get]
 func (c *UserController) GetBalances(ec echo.Context) error {
 	claims, err := c.jwt.GetClaims(ec)
 	if err != nil || claims.UserID == nil {
@@ -103,18 +103,18 @@ func (c *UserController) GetBalances(ec echo.Context) error {
 
 // GetBalanceHistory godoc
 //
-//  @Summary        Get user balance history
-//  @Description    List balance change transactions for the authenticated user
-//  @Tags           users
-//  @Accept         json
-//  @Produce        json
-//  @Param          currency    query   string  true    "Currency"    Enums(COIN,SPIN)
-//  @Param          type        query   string  false   "Transaction type"  Enums(DAILY_REWARD,AD_WATCH,PURCHASE,SPIN_USE)
-//  @Success        200     {array}     response.BalanceTransactionResponse
-//  @Failure        400
-//  @Failure        401
-//  @Failure        500
-//  @Router         /api/v1/users/balances/history [get]
+//	@Summary        Get user balance history
+//	@Description    List balance change transactions for the authenticated user
+//	@Tags           users
+//	@Accept         json
+//	@Produce        json
+//	@Param          currency    query   string  true    "Currency"    Enums(COIN,SPIN)
+//	@Param          type        query   string  false   "Transaction type"  Enums(DAILY_REWARD,AD_WATCH,PURCHASE,SPIN_USE)
+//	@Success        200     {array}     response.BalanceTransactionResponse
+//	@Failure        400
+//	@Failure        401
+//	@Failure        500
+//	@Router         /api/v1/users/balances/history [get]
 func (c *UserController) GetBalanceHistory(ec echo.Context) error {
 	claims, err := c.jwt.GetClaims(ec)
 	if err != nil || claims.UserID == nil {

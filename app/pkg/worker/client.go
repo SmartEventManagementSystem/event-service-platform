@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/locker"
+	"backend/event-service-platform/app/pkg/locker"
 
 	"github.com/google/uuid"
 	"go.uber.org/zap"

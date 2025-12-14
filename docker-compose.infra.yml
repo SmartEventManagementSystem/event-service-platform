@@ -13,10 +13,10 @@ services:
       - c0x12c_net
     command: postgres -N 500
     ports:
-      - 5433:5432
+      - "${DB_PORT:-5433}:5432"
     volumes:
       - ./db-scripts:/docker-entrypoint-initdb.d
-      - ~/.pg-datajs:/var/lib/postgresql/data # Persistent volume
+      - ~/.pg-event-service-platform-datajs:/var/lib/postgresql/data
   
   redis-cluster:
     image: channguyen/redis-cluster-x86:latest

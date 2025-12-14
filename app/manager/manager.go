@@ -1,11 +1,11 @@
 package manager
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/bcrypt"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/queue"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/bcrypt"
+	"backend/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/pkg/queue"
 )
 
 type Managers struct {

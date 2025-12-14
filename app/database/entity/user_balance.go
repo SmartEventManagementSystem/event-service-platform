@@ -3,7 +3,7 @@ package entity
 import (
 	"time"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
+	"backend/event-service-platform/app/database/constant/currency"
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"

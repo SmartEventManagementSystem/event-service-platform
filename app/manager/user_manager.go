@@ -5,9 +5,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/database/repository"
 )
 
 type UserManager interface {

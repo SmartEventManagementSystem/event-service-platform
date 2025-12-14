@@ -3,8 +3,8 @@ package response
 import (
 	"time"
 
+	"backend/event-service-platform/app/database/constant/role"
 	"github.com/google/uuid"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/role"
 )
 
 type AuthResponse struct {

@@ -1,7 +1,7 @@
 package bcrypt_test
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/bcrypt"
+	"backend/event-service-platform/app/pkg/bcrypt"
 	"fmt"
 	"strings"
 	"testing"

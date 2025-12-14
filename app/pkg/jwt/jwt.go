@@ -1,7 +1,7 @@
 package jwt
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/config"
 	"crypto/rand"
 	"encoding/base64"
 	"fmt"

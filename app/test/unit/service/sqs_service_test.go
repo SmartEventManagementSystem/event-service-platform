@@ -1,9 +1,9 @@
 package service_test
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/sqs"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/pkg/sqs"
+	"backend/event-service-platform/app/service"
 	"testing"
 	"time"
 

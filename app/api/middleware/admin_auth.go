@@ -3,10 +3,10 @@ package middleware
 import (
 	"net/http"
 
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/jwt"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
 )
 
 type AdminAuthMiddleware struct {

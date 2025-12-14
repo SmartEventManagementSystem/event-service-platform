@@ -5,14 +5,14 @@ import (
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/controller"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/middleware"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/validator"
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
-	echoUtil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/echo"
-	//_ "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/docs"/
+	"backend/event-service-platform/app/api/controller"
+	"backend/event-service-platform/app/api/middleware"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/internal/validator"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
+	echoUtil "backend/event-service-platform/app/pkg/util/echo"
+	//_ "backend/event-service-platform/docs"/
 )
 
 const (

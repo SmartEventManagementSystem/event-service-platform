@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	httputil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/test/util"
+	"backend/event-service-platform/app/api/client/response"
+	httputil "backend/event-service-platform/app/test/util"
 )
 
 const (

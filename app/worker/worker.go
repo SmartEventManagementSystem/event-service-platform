@@ -1,8 +1,8 @@
 package worker
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	service "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service"
+	"backend/event-service-platform/app/internal/runtime"
+	service "backend/event-service-platform/app/service"
 	"context"
 
 	"go.uber.org/zap"

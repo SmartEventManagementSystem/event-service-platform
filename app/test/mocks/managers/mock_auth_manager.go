@@ -5,8 +5,8 @@
 package mocks
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/api/client/response"
 	"context"
 
 	mock "github.com/stretchr/testify/mock"

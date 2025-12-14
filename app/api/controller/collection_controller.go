@@ -2,17 +2,17 @@ package controller
 
 import (
 	"fmt"
-	"net/http"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
+	"net/http"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	collectionconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/collection"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/api/client/response"
+	collectionconst "backend/event-service-platform/app/database/constant/collection"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/manager"
+	"backend/event-service-platform/app/pkg/jwt"
 )
 
 type CollectionController struct {

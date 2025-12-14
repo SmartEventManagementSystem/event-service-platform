@@ -12,10 +12,10 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/middleware"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	jwtPkg "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/api/middleware"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/runtime"
+	jwtPkg "backend/event-service-platform/app/pkg/jwt"
 
 	"go.uber.org/zap"
 )

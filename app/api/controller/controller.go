@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/manager"
 )
 
 type Controllers struct {

@@ -11,15 +11,15 @@ import (
 	"go.uber.org/zap"
 	"golang.org/x/net/http2"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/controller"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/middleware"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/router"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/validator"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
-    "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service/social"
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
+	"backend/event-service-platform/app/api/controller"
+	"backend/event-service-platform/app/api/middleware"
+	"backend/event-service-platform/app/api/router"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/internal/validator"
+	"backend/event-service-platform/app/manager"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
+	"backend/event-service-platform/app/service/social"
 )
 
 type Server runtime.Resource

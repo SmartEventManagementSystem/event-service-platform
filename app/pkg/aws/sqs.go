@@ -1,7 +1,7 @@
 package aws
 
 import (
-	appConfig "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
+	appConfig "backend/event-service-platform/app/internal/config"
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/aws"

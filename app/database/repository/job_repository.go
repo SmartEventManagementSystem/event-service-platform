@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/internal/runtime"
 	"context"
 	"time"
 

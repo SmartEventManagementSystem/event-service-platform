@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/db"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/logging"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/redis"
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
-	httpClientUtil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/httpclient"
-	server "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/worker"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/db"
+	"backend/event-service-platform/app/pkg/logging"
+	"backend/event-service-platform/app/pkg/redis"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
+	httpClientUtil "backend/event-service-platform/app/pkg/util/httpclient"
+	server "backend/event-service-platform/app/worker"
 	"context"
 	"time"
 

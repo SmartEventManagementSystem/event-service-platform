@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/api/client/response"
 
 	"github.com/labstack/echo/v4"
 )

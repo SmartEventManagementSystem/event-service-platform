@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/database/constant/job"
 )
 
 type JobPayload map[string]interface{}

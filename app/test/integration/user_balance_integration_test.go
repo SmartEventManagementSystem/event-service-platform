@@ -6,11 +6,11 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-	txconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/transaction"
-	httputil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/test/util"
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/database/constant/currency"
+	txconst "backend/event-service-platform/app/database/constant/transaction"
+	httputil "backend/event-service-platform/app/test/util"
 )
 
 type UserBalanceIntegrationSuite struct {

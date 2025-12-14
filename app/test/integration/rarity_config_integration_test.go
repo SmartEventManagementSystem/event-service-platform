@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/repository"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"
 )

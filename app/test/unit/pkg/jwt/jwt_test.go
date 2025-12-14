@@ -1,8 +1,8 @@
 package jwt_test
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	jwtpkg "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
+	"backend/event-service-platform/app/internal/config"
+	jwtpkg "backend/event-service-platform/app/pkg/jwt"
 	"encoding/base64"
 	"testing"
 	"time"

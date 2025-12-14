@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/internal/runtime"
 
 	"github.com/labstack/echo/v4"
 )

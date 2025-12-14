@@ -1,13 +1,13 @@
 package integration
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/queue"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/sqs"
-	service "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/service"
+	"backend/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/manager"
+	"backend/event-service-platform/app/pkg/queue"
+	"backend/event-service-platform/app/pkg/sqs"
+	service "backend/event-service-platform/app/service"
 	"context"
 	"encoding/json"
 	"fmt"

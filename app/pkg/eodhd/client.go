@@ -1,7 +1,7 @@
 package eodhd
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/internal/runtime"
 	"context"
 	"encoding/json"
 	"fmt"

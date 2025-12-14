@@ -5,9 +5,9 @@
 package mocks
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/transaction"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/constant/currency"
+	"backend/event-service-platform/app/database/constant/transaction"
+	"backend/event-service-platform/app/database/entity"
 	"context"
 
 	"github.com/google/uuid"

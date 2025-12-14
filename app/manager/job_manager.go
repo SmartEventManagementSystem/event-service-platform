@@ -1,10 +1,10 @@
 package manager
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/queue"
+	"backend/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/pkg/queue"
 	"context"
 	"fmt"
 	"time"

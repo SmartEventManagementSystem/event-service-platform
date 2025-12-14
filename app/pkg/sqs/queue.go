@@ -1,8 +1,8 @@
 package sqs
 
 import (
-	jobconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/job"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
+	jobconst "backend/event-service-platform/app/database/constant/job"
+	"backend/event-service-platform/app/database/entity"
 	"context"
 	"encoding/json"
 	"fmt"

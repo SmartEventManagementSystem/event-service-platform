@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strings"
 
-	pagingUtil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/paging"
+	pagingUtil "backend/event-service-platform/app/pkg/util/paging"
 
 	"github.com/mitchellh/mapstructure"
 	"github.com/uptrace/bun"

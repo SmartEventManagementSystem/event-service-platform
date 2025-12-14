@@ -11,12 +11,12 @@ require-template-schema-exists: true
 template: testify
 template-schema: '{{.Template}}.schema.json'
 packages:
-  github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager:
+  backend/event-service-platform/app/manager:
     config:
       all: true
       include-auto-generated: true
       dir: 'app/test/mocks/managers'
-  github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/clients:
+  backend/event-service-platform/app/pkg/clients:
     config:
       all: true
       include-auto-generated: true

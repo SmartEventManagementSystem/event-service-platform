@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/internal/runtime"
 )
 
 type PostRepository interface {

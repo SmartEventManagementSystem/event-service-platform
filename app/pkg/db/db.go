@@ -10,7 +10,7 @@ import (
 	"go.uber.org/zap"
 	sqlTrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/database/sql"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/config"
 )
 
 type DB struct {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
 
 	"github.com/google/uuid"
 )

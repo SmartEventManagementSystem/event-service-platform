@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/internal/runtime"
 )
 
 type Repositories struct {
@@ -33,7 +33,7 @@ func NewRepositories(res runtime.Resource) *Repositories {
 		RarityConfigRepository:           NewRarityConfigRepository(res),
 		EventRepository:                  NewEventRepository(res),
 		PostRepository:                   NewPostRepository(res),
-			CommentRepository:                NewCommentRepository(res),
+		CommentRepository:                NewCommentRepository(res),
 		UserFollowRepository:             NewUserFollowRepository(res),
 	}
 }

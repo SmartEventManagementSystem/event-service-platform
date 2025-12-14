@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/constants"
+	"backend/event-service-platform/app/pkg/util/constants"
 )
 
 type ValidationError struct {

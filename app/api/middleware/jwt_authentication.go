@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/jwt"
 	"github.com/labstack/echo/v4"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/jwt"
 	"go.uber.org/zap"
 )
 

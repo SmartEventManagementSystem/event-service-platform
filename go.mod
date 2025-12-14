@@ -1,4 +1,4 @@
-module github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform
+module backend/event-service-platform
 
 go 1.24.5
 

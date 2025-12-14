@@ -1,12 +1,12 @@
 package service
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/queue"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/worker"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/worker/handlers"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/queue"
+	"backend/event-service-platform/app/pkg/worker"
+	"backend/event-service-platform/app/pkg/worker/handlers"
 	"context"
 	"fmt"
 	"sync"

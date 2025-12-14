@@ -3,7 +3,7 @@ package util_test
 import (
 	"testing"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/validator"
+	"backend/event-service-platform/app/pkg/util/validator"
 )
 
 func TestIsDomainAllowed_Exact(t *testing.T) {

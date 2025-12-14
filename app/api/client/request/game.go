@@ -1,7 +1,7 @@
 package request
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
+	"backend/event-service-platform/app/database/constant/currency"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 )

@@ -1,8 +1,8 @@
 package request
 
 import (
-	collectionconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/collection"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
+	collectionconst "backend/event-service-platform/app/database/constant/collection"
+	"backend/event-service-platform/app/database/constant/currency"
 	"github.com/go-playground/validator/v10"
 )
 

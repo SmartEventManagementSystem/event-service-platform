@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/sqs"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/pkg/sqs"
 	"context"
 	"fmt"
 	"sync"

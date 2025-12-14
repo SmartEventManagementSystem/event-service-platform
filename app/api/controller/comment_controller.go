@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strings"
 
+	"backend/event-service-platform/app/api/client/request"
+	"backend/event-service-platform/app/internal/runtime"
+	"backend/event-service-platform/app/manager"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/request"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
 )
 
 type CommentController struct {

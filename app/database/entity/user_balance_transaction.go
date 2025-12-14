@@ -3,8 +3,8 @@ package entity
 import (
 	"time"
 
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-	txconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/transaction"
+	"backend/event-service-platform/app/database/constant/currency"
+	txconst "backend/event-service-platform/app/database/constant/transaction"
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"

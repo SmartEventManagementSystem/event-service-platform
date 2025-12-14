@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strings"
 
+	"backend/event-service-platform/app/api/client/response"
+	"backend/event-service-platform/app/internal/runtime"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/api/client/response"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/runtime"
 	"go.uber.org/zap"
 )
 

@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	ctxutil "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/util/context"
+	ctxutil "backend/event-service-platform/app/pkg/util/context"
 )
 
 // bindEnv binds an environment variable with an optional default value

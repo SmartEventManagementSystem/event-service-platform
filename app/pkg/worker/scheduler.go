@@ -1,8 +1,8 @@
 package worker
 
 import (
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/internal/config"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/pkg/locker"
+	"backend/event-service-platform/app/internal/config"
+	"backend/event-service-platform/app/pkg/locker"
 
 	"github.com/go-co-op/gocron/v2"
 	"go.uber.org/zap"

@@ -1,11 +1,11 @@
 package integration
 
 import (
-	collectionconst "github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/collection"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/constant/currency"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/entity"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/database/repository"
-	"github.com/iamhuutho/Event-Management-System/Event-Management-System-BE/event-service-platform/app/manager"
+	collectionconst "backend/event-service-platform/app/database/constant/collection"
+	"backend/event-service-platform/app/database/constant/currency"
+	"backend/event-service-platform/app/database/entity"
+	"backend/event-service-platform/app/database/repository"
+	"backend/event-service-platform/app/manager"
 	"context"
 	"testing"
 	"time"
