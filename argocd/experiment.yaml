@@ -1,0 +1,101 @@
+# ============================================
+# EXPERIMENT - Test version mới trước khi deploy
+# ============================================
+apiVersion: argoproj.io/v1alpha1
+kind: Experiment
+metadata:
+  name: event-service-test
+  namespace: default
+spec:
+  # Thời gian chạy experiment
+  duration: 30m
+
+  # Thành phần cần test
+  components:
+    # ReplicaSet cho version mới
+    - replicas: 1
+      name: event-service-new
+      template:
+        metadata:
+          labels:
+            app: event-service
+        spec:
+          containers:
+            - name: event-service
+              image: nginx:latest  # Thay bằng image version mới
+              ports:
+                - containerPort: 8080
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "100m"
+              # Readiness probe để kiểm tra service ready
+              readinessProbe:
+                httpGet:
+                  path: /
+                  port: 80
+                initialDelaySeconds: 5
+                periodSeconds: 5
+
+  # Phân tích kết quả (tùy chọn)
+  analyses:
+    # Kiểm tra success rate
+    - name: success-rate
+      templates:
+        - templateName: success-rate
+      args:
+        - name: service-name
+          value: event-service-new
+    # Kiểm tra response time
+    - name: response-time
+      templates:
+        - templateName: response-time
+      args:
+        - name: service-name
+          value: event-service-new
+
+---
+# ============================================
+# ANALYSIS TEMPLATE - Template cho phân tích
+# ============================================
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+  namespace: default
+spec:
+  args:
+    - name: service-name
+  metrics:
+    # Kiểm tra HTTP success rate
+    - name: success-rate
+      successCondition: result[0] >= 0.95  # 95% success rate
+      provider:
+        prometheus:
+          address: http://prometheus:9090
+          query: |
+            sum(rate(http_requests_total{service="{{args.service-name}}",status=~"2.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="{{args.service-name}}"}[5m]))
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: response-time
+  namespace: default
+spec:
+  args:
+    - name: service-name
+  metrics:
+    # Kiểm tra response time trung bình
+    - name: avg-response-time
+      successCondition: result[0] <= 1000  # < 1 giây
+      provider:
+        prometheus:
+          address: http://prometheus:9090
+          query: |
+            histogram_quantile(0.95,
+              sum(rate(http_request_duration_seconds_bucket{service="{{args.service-name}}"}[5m]))
+              by (le)
+            )

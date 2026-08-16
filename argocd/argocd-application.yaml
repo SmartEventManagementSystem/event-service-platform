@@ -1,0 +1,17 @@
+# ArgoCD Application - Trỏ đến local manifests
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: event-service-rollout
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/iamhuutho/event-management-system.git
+    path: infra/kubernetes/argocd
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated: null
