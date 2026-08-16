@@ -4,10 +4,15 @@ kind: Rollout
 metadata:
   name: event-service
   namespace: default
+  labels:
+    app: event-service
 spec:
   replicas: 2
   selector:
     matchLabels:
+      app: event-service
+  workloadMetadata:
+    labels:
       app: event-service
   template:
     metadata:
@@ -27,7 +32,6 @@ spec:
     canary:
       canaryService: event-service-canary
       stableService: event-service-stable
-      # Không dùng trafficRouting - đơn giản
       steps:
         - setWeight: 10
         - pause: {}
