@@ -1,4 +1,4 @@
-# Rollout - Simple Canary (không cần Ingress)
+# Rollout - Canary Deployment cho Event Service
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -11,9 +11,6 @@ spec:
   selector:
     matchLabels:
       app: event-service
-  workloadMetadata:
-    labels:
-      app: event-service
   template:
     metadata:
       labels:
@@ -21,20 +18,28 @@ spec:
     spec:
       containers:
         - name: event-service
-          image: nginx:latest
+          image: iamhuutho/event-service:latest  # ← Image của bạn
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "50m"
+              memory: "128Mi"
+              cpu: "100m"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
   strategy:
     canary:
       canaryService: event-service-canary
       stableService: event-service-stable
       steps:
         - setWeight: 10
-        - pause: {}
+        - pause: {}           # Dừng ở đây - xem log
         - setWeight: 30
+        - pause: {duration: 3}
+        - setWeight: 50
         - pause: {duration: 3}
         - setWeight: 100
