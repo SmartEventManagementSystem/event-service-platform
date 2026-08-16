@@ -1,4 +1,4 @@
-# ArgoCD Application - Trỏ đến local manifests
+# ArgoCD Application
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -7,8 +7,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/iamhuutho/event-management-system.git
-    path: infra/kubernetes/argocd
+    repoURL: https://github.com/SmartEventManagementSystem/event-service-platform.git
+    path: argocd
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
