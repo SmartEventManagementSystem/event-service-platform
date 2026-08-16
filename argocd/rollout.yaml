@@ -19,10 +19,18 @@ spec:
       containers:
         - name: event-service
           image: event-service:latest
-          imagePullPolicy: Never  # Không pull, dùng local image
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
           resources:
             requests:
               memory: "128Mi"
               cpu: "100m"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: event-service-config
