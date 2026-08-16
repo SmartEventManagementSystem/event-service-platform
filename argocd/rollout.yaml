@@ -1,4 +1,4 @@
-# Deployment thay vì Rollout (để test trước)
+# Deployment với nginx (test trước)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,16 +18,10 @@ spec:
     spec:
       containers:
         - name: event-service
-          image: docker.io/library/event-service:latest
+          image: nginx:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 10
+              memory: "64Mi"
+              cpu: "50m"
