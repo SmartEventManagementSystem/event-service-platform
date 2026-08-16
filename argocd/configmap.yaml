@@ -1,0 +1,19 @@
+# ConfigMap cho event-service
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: event-service-config
+  namespace: default
+data:
+  config-local.yaml: |
+    database:
+      host: "localhost"
+      port: 5432
+      user: "postgres"
+      password: "postgres"
+      dbname: "event_management"
+      sslmode: "disable"
+
+    server:
+      host: "0.0.0.0"
+      port: 8080
