@@ -6,24 +6,34 @@ metadata:
   namespace: default
 spec:
   duration: 30m
-  successfulRuns: 1
-  failedRuns: 1
   templates:
     - name: event-service-test
-      spec:
-        replicas: 1
-        selector:
-          matchLabels:
+      service:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: event-service-test
+        spec:
+          selector:
             app: event-service
-            experiment: event-service-test
-        template:
-          metadata:
-            labels:
-              app: event-service
-              experiment: event-service-test
-          spec:
-            containers:
-              - name: event-service
-                image: nginx:1.21
-                ports:
-                  - containerPort: 80
+          ports:
+            - port: 80
+              targetPort: 80
+      replicas: 1
+      selector:
+        matchLabels:
+          app: event-service-test
+      template:
+        metadata:
+          labels:
+            app: event-service-test
+        spec:
+          containers:
+            - name: event-service
+              image: nginx:1.21
+              ports:
+                - containerPort: 80
+              resources:
+                requests:
+                  memory: "64Mi"
+                  cpu: "50m"
