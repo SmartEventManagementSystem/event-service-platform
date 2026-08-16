@@ -1,26 +1,13 @@
-# Services - Stable & Canary
+# Services
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-service-stable
+  name: event-service
   namespace: default
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
-      targetPort: 80
-  selector:
-    app: event-service
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: event-service-canary
-  namespace: default
-spec:
-  type: ClusterIP
-  ports:
-    - port: 80
-      targetPort: 80
+      targetPort: 8080
   selector:
     app: event-service

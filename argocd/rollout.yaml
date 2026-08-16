@@ -1,9 +1,11 @@
-# Rollout - Simple Deployment
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+# Deployment thay vì Rollout (để test trước)
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: event-service
   namespace: default
+  labels:
+    app: event-service
 spec:
   replicas: 2
   selector:
@@ -29,19 +31,3 @@ spec:
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 10
-  strategy:
-    canary:
-      canaryService: event-service-canary
-      stableService: event-service-stable
-      trafficRouting:
-        istio:
-          virtualService:
-            name: event-service-vsvc
-            routes:
-              - primary
-      steps:
-        - setWeight: 10
-        - pause: {}
-        - setWeight: 30
-        - pause: {duration: 3}
-        - setWeight: 100
