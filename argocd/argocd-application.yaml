@@ -1,17 +1,41 @@
-# ArgoCD Application
+# ArgoCD Application for Event Service Platform
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: event-service-rollout
+  name: event-service-platform
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: event-service
+    app.kubernetes.io/part-of: ems-platform
 spec:
   project: default
   source:
-    repoURL: https://github.com/SmartEventManagementSystem/event-service-platform.git
-    path: argocd
+    repoURL: https://github.com/EMS-Project/event-service-platform.git
     targetRevision: main
+    path: argocd
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: event-service
   syncPolicy:
-    automated: null
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+      - RespectIgnoreDifferences=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+    ignoreDifferences:
+      - group: apps
+        kind: Rollout
+        jsonPointers:
+          - /spec/replicas
+  revisionHistoryLimit: 10

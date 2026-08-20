@@ -1,36 +1,203 @@
-# Deployment cho Event Service
-apiVersion: apps/v1
-kind: Deployment
+# Event Service Deployment with Argo Rollouts (Canary Strategy)
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: event-service
-  namespace: default
+  namespace: event-service
   labels:
-    app: event-service
+    app.kubernetes.io/name: event-service
+    app.kubernetes.io/component: backend
 spec:
-  replicas: 2
+  replicas: 3
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: event-service
+      app.kubernetes.io/name: event-service
   template:
     metadata:
       labels:
-        app: event-service
+        app.kubernetes.io/name: event-service
+        app.kubernetes.io/version: v1.0.0
     spec:
       containers:
         - name: event-service
-          image: event-service:latest
-          imagePullPolicy: Never
+          image: ghcr.io/ems-project/event-service:v1.0.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 9090
+              name: metrics
+              protocol: TCP
+          env:
+            - name: DB_HOST
+              value: postgres.dataplatform.svc.cluster.local
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: event-service-secrets
+                  key: db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: event-service-secrets
+                  key: db-password
+            - name: DB_NAME
+              value: "events"
+            - name: KAFKA_BROKERS
+              value: "kafka.dataplatform.svc.cluster.local:9092"
+            - name: REDIS_HOST
+              value: redis.dataplatform.svc.cluster.local
+            - name: REDIS_PORT
+              value: "6379"
+            - name: AI_SERVICE_URL
+              value: http://ai-service.ai-service.svc.cluster.local:8081
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
-          volumeMounts:
-            - name: config
-              mountPath: /config
-              readOnly: true
-      volumes:
-        - name: config
-          configMap:
-            name: event-service-config
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 10"]
+  strategy:
+    canary:
+      canaryService: event-service-canary
+      stableService: event-service-stable
+      trafficRouting:
+        nginx:
+          stableIngress: event-service
+          additionalIngressAnnotations:
+            canary-by-header: X-Canary
+      steps:
+        - setWeight: 5
+        - pause: {duration: 1m}
+        - analysis:
+            templates:
+              - templateName: event-service-analysis
+            args:
+              - name: service-name
+                value: event-service
+        - setWeight: 20
+        - pause: {duration: 2m}
+        - setWeight: 50
+        - pause: {duration: 2m}
+        - setWeight: 80
+        - pause: {duration: 1m}
+      analysis:
+        successfulRunHistoryLimit: 3
+        failedRunHistoryLimit: 3
+      maxSurge: "25%"
+      maxUnavailable: 0
+---
+# Stable Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-service-stable
+  namespace: event-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+  selector:
+    app.kubernetes.io/name: event-service
+---
+# Canary Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-service-canary
+  namespace: event-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+  selector:
+    app.kubernetes.io/name: event-service
+---
+# Ingress for Event Service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: event-service
+  namespace: event-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "persistent"
+    nginx.ingress.kubernetes.io/load-balance: "ip_hash"
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "0"
+spec:
+  tls:
+    - hosts:
+        - api-events.ems.local
+      secretName: event-service-tls
+  rules:
+    - host: api-events.ems.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: event-service-stable
+                port:
+                  number: 80
+---
+# Analysis Template
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: event-service-analysis
+  namespace: event-service
+spec:
+  args:
+    - name: service-name
+  metrics:
+    - name: success-rate
+      interval: 1m
+      successCondition: result[0] >= 0.95
+      failureLimit: 3
+      provider:
+        prometheus:
+          address: http://prometheus.monitoring.svc.cluster.local:9090
+          query: sum(rate(http_server_requests_seconds_count{job="event-service",status=~"2.."}[5m])) / sum(rate(http_server_requests_seconds_count{job="event-service"}[5m]))
+    - name: latency-p99
+      interval: 1m
+      successCondition: result[0] <= 500
+      failureLimit: 3
+      provider:
+        prometheus:
+          address: http://prometheus.monitoring.svc.cluster.local:9090
+          query: histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{job="event-service"}[5m])) by (le))

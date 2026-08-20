@@ -1,13 +1,62 @@
-# Services
+# Event Service Services
 apiVersion: v1
 kind: Service
 metadata:
   name: event-service
-  namespace: default
+  namespace: event-service
+  labels:
+    app.kubernetes.io/name: event-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 8080
+      name: http
+    - port: 9090
+      targetPort: 9090
+      name: metrics
   selector:
-    app: event-service
+    app.kubernetes.io/name: event-service
+---
+# Headless Service for pods discovery
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-service-headless
+  namespace: event-service
+spec:
+  clusterIP: None
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: event-service
+---
+# Ingress for Event Service API
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: event-service-ingress
+  namespace: event-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+spec:
+  tls:
+    - hosts:
+        - api-events.ems.local
+      secretName: event-service-tls
+  rules:
+    - host: api-events.ems.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: event-service
+                port:
+                  number: 80
